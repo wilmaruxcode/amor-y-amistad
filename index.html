@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Saca tu papelito y descubre a tu amigo secreto.">
+  <title>Amor y Amistad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,700&family=Great+Vibes&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-screen="home">
+  <canvas id="scene-canvas" aria-hidden="true"></canvas>
+  <div class="silk" aria-hidden="true"></div>
+  <div class="atmosphere" aria-hidden="true">
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="spark"></span>
+    <span class="spark"></span>
+    <span class="spark"></span>
+    <span class="spark"></span>
+    <span class="heart-float">♥</span>
+    <span class="heart-float">♥</span>
+    <span class="heart-float">♥</span>
+  </div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <audio id="theme-audio" preload="auto" playsinline></audio>
+
+  <main id="app" class="app">
+    <section id="screen-home" class="screen is-active" aria-labelledby="home-title">
+      <div class="card home-card">
+        <span class="corner c-tl" aria-hidden="true"></span>
+        <span class="corner c-tr" aria-hidden="true"></span>
+        <span class="corner c-bl" aria-hidden="true"></span>
+        <span class="corner c-br" aria-hidden="true"></span>
+        <div class="ribbon" aria-hidden="true"><span>14 papelitos</span></div>
+        <p class="wax" aria-hidden="true">💌</p>
+        <p class="kicker">Sorteo de papelitos</p>
+        <h1 id="home-title">Amor y Amistad</h1>
+        <div class="divider" aria-hidden="true">✦</div>
+        <p class="tagline">¿Listos para descubrir a quién les toca?</p>
+        <p class="tiny">Pasa el celular, saca tu papelito y guarda el secreto.</p>
+        <button type="button" id="btn-start" class="btn btn-main">🎁 Empezar sorteo</button>
+      </div>
+    </section>
+
+    <section id="screen-turn" class="screen" hidden aria-labelledby="turn-heading">
+      <div class="card turn-card">
+        <span class="corner c-tl" aria-hidden="true"></span>
+        <span class="corner c-tr" aria-hidden="true"></span>
+        <span class="corner c-bl" aria-hidden="true"></span>
+        <span class="corner c-br" aria-hidden="true"></span>
+        <p id="turn-kicker" class="kicker">Es el turno de...</p>
+        <div class="nameplate">
+          <h1 id="turn-heading" class="player-name">VIVIANA</h1>
+        </div>
+        <p id="turn-hint" class="hint">Pásale el dispositivo a Viviana.</p>
+        <button type="button" id="btn-draw" class="btn btn-main">🎁 Sacar mi papelito</button>
+      </div>
+    </section>
+
+    <section id="screen-drawing" class="screen" hidden aria-live="polite">
+      <div class="drawing-caption">
+        <p class="kicker">La bolsa se mueve...</p>
+        <h2>Sacando tu papelito</h2>
+        <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+    </section>
+
+    <section id="screen-reveal" class="screen" hidden aria-labelledby="reveal-heading">
+      <div class="card reveal-card">
+        <article id="slip" class="slip" aria-label="Papelito">
+          <div class="slip-fold" aria-hidden="true"></div>
+          <div class="slip-body">
+            <p class="wax mini" aria-hidden="true">💌</p>
+            <p id="slip-tease" class="slip-tease">Tu papelito...</p>
+            <h2 id="reveal-heading" class="slip-label">Tu amigo secreto es...</h2>
+            <p id="secret-name" class="secret-name"></p>
+            <p id="remember" class="remember" hidden>🤫 Recuerda tu amigo secreto.</p>
+          </div>
+        </article>
+        <button type="button" id="btn-continue" class="btn btn-main" hidden>Continuar</button>
+      </div>
+    </section>
+
+    <section id="screen-finished" class="screen" hidden aria-labelledby="finished-title">
+      <div class="card finish-card">
+        <span class="corner c-tl" aria-hidden="true"></span>
+        <span class="corner c-tr" aria-hidden="true"></span>
+        <span class="corner c-bl" aria-hidden="true"></span>
+        <span class="corner c-br" aria-hidden="true"></span>
+        <div class="confetti" aria-hidden="true"></div>
+        <p class="wax" aria-hidden="true">🎉</p>
+        <h1 id="finished-title">¡Todos tienen su amigo secreto!</h1>
+        <div class="divider" aria-hidden="true">✦</div>
+        <p class="tagline">Ahora comienza la misión de guardar el secreto. 🤫💌</p>
+        <div class="finale-icons" aria-hidden="true">
+          <span>💖</span><span>✨</span><span>🎁</span><span>💌</span><span>🎊</span>
+        </div>
+        <button type="button" id="btn-replay" class="btn btn-main">🔄 Jugar de nuevo</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
